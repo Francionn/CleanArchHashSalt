@@ -8,7 +8,7 @@ class DBConnectionHandler:
     def __init__(self) -> None:
         self.__connection_string = os.getenv(
             'DB_CONNECTION_STRING', 
-            'mysql+pymysql://root:brtt123456@localhost:3306/db_hash_salt'
+            'mysql+pymysql://root:brtt123456@mysqldb/db_hash_salt'
             )
         self.__engine = self.__create_database_engine()
 

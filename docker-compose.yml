@@ -1,0 +1,25 @@
+version: "3.10"
+
+services:
+  mysqldb:
+    image: mysql:latest
+    environment:
+      - MYSQL_ROOT_PASSWORD=brtt123456
+    volumes:
+      - ./init:/docker-entrypoint-initdb.d
+      - mysqlVolume:/var/lib/mysql
+      - mysqlConfig:/etc/mysql
+    ports:
+      - "3307:3306"
+
+  docker-python:
+    build:
+      context: .
+    ports:
+      - "3000:5000"
+    depends_on:
+      - mysqldb
+
+volumes:
+  mysqlVolume:
+  mysqlConfig:
