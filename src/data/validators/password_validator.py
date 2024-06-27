@@ -26,4 +26,3 @@ class PasswordValidator:
     def check_special(password):
         special_characters = set("!@#$%^&*()-_=+[]{}|;:'\",.<>?/`~")
         return any(char in special_characters for char in password)
-    

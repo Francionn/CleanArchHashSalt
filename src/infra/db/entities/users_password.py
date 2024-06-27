@@ -1,10 +1,9 @@
 import bcrypt
 
-from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
+from sqlalchemy import Column, Integer, String, ForeignKey
 
 from src.infra.db.settings.base import Base
-from src.validators.password_register_validator import PasswordValidator
 
 
 class Userpassword(Base):
@@ -26,8 +25,7 @@ class Userpassword(Base):
 
     @raw_password.setter
     def raw_password(self, password):
-        if PasswordValidator.validate(password):
-            self.passwordhash = self.hash_password(password)
+        self.passwordhash = self.hash_password(password)
     
     def hash_password(self, password: str) -> str:
         salt = bcrypt.gensalt()

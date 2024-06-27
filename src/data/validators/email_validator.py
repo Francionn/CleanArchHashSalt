@@ -32,5 +32,4 @@ class EmailValidators:
     @staticmethod
     def valid_domain(domain):
         return ('.' in domain and not(domain.endswith('.')) and\
-        all(char.isalnum() or char in "._" for char in domain)) 
-    
+        all(char.isalnum() or char in "._" for char in domain))    

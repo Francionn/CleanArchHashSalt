@@ -2,7 +2,6 @@ from sqlalchemy import Column, Integer, String, Index
 from sqlalchemy.orm import relationship
 
 from src.infra.db.settings.base import Base
-from src.validators.email_register_validator import EmailValidators
 from src.infra.db.entities.users_password import Userpassword
 
 
@@ -19,19 +18,9 @@ class User(Base):
 
     def __init__(self, name, password, email):
         self.name = name
-        self.email = None
-        self.raw_email = email
+        self.email = email
         self.userpasswords = []
-        self.userpasswords.append(Userpassword(password))
-
-    @property
-    def raw_email(self):
-        return self.email
-
-    @raw_email.setter
-    def raw_email(self, email):
-        if EmailValidators.validate(email):
-            self.email = email
-
+        self.userpasswords.append(Userpassword(password))  
+    
     def __repr__(self):
         return f'Nome: {self.name} / Password: {self.userpasswords} / Email: {self.email}'

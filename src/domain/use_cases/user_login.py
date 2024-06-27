@@ -1,6 +1,7 @@
 from abc import ABC, abstractmethod
 
-class UserFinder(ABC):
+class UserLogin(ABC):
     
     @abstractmethod
     def login_validator(self, email:str, password:str) -> bool: pass
+    
